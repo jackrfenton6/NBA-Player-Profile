@@ -11,7 +11,7 @@ class ProfileListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var profiles = Profiles()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

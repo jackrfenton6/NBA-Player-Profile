@@ -33,7 +33,7 @@ class Profiles {
                 self.profileArray = try JSONDecoder().decode([ProfileInfo].self, from: data!)
 
             } catch {
-                print("JSON Error: \(error.localizedDescription)")
+                print("JSON Error: \(error)")
             }
         }
         task.resume()
