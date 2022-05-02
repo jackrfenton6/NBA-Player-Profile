@@ -505,6 +505,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4w8-E0-QAr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="g24-V5-sQ9" firstAttribute="leading" secondItem="4w8-E0-QAr" secondAttribute="leading" constant="16" id="3Pq-0I-yCG"/>
                             <constraint firstItem="9Uz-MY-dNt" firstAttribute="leading" secondItem="4w8-E0-QAr" secondAttribute="leading" constant="16" id="4gZ-ke-1Kb"/>
