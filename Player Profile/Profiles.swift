@@ -15,7 +15,7 @@ class Profiles {
     func getData(completed: @escaping () -> ()) {
         let urlString = url
         
-        print("We are accessing the url \(urlString)")
+        print("We are accessing the url: \(urlString)")
         
         //Create a URL
         guard let url = URL(string: urlString) else {
@@ -31,11 +31,12 @@ class Profiles {
             }
             do {
                 self.profileArray = try JSONDecoder().decode([ProfileInfo].self, from: data!)
-
             } catch {
                 print("JSON Error: \(error)")
             }
+            completed()
         }
         task.resume()
     }
+
 }
