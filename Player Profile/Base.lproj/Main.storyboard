@@ -147,7 +147,7 @@
                     <navigationItem key="navigationItem" title="NBA News" id="Nqs-NB-dyi">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="Ese-S1-mV2">
                             <connections>
-                                <action selector="backButtonPressed:" destination="7ix-hw-Jeq" id="0Aq-js-nSk"/>
+                                <action selector="backButtonPressed:" destination="7ix-hw-Jeq" id="zdo-S7-Yxr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -527,12 +527,11 @@
                     <navigationItem key="navigationItem" id="WcP-x5-UbB">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="3ub-vQ-b0s">
                             <connections>
-                                <action selector="backButtonPressed:" destination="GH0-Bp-zGb" id="xk5-Mx-DZ4"/>
+                                <action selector="backButtonPressed:" destination="GH0-Bp-zGb" id="EPe-DM-uEJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButtonPressed" destination="WcP-x5-UbB" id="lkK-dn-78I"/>
                         <outlet property="contentLabel" destination="9Uz-MY-dNt" id="hNs-fX-yk1"/>
                         <outlet property="dateLabel" destination="9Uz-MY-dNt" id="Fge-U3-pD2"/>
                         <outlet property="sourceLabel" destination="SmB-FV-boo" id="thz-7G-rcD"/>

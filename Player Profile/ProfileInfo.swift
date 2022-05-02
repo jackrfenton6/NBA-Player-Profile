@@ -11,7 +11,7 @@ struct ProfileInfo: Codable {
     var FanDuelName: String
     var Team: String
     var Position: String
-    var Height: Int
+    var Height: Int?
     var Weight: Int
     var College: String
     var Salary: Int?
