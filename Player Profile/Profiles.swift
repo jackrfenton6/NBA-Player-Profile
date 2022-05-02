@@ -31,6 +31,7 @@ class Profiles {
             }
             do {
                 self.profileArray = try JSONDecoder().decode([ProfileInfo].self, from: data!)
+                print(self.profileArray)
             } catch {
                 print("JSON Error: \(error)")
             }

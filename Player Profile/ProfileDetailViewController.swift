@@ -22,26 +22,46 @@ class ProfileDetailViewController: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    var profiles = Profiles()
+    var profileData: ProfileInfo!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        nameLabel.text =
-        print(profiles.profileArray)
+        let heightFeet = Int(Float(profileData.Height/12).rounded())
+        let heightInches = Int(profileData.Height) - Int(heightFeet*12)
+        let height = "\(heightFeet)'\(heightInches)"
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let salary = numberFormatter.string(from: NSNumber(value: profileData.Salary ?? 0))
         
-        profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2
-        profileImageView.clipsToBounds = true
-//        guard let url = URL(string: profiles.profileArray.PhotoUrl) else {
-//            profileImageView.image = UIImage(systemName: "nba-logo")
-//            return
-//        }
-//        profileImageView.sd_setImage(with: url, placeholderImage: UIImage(systemName: "nba-logo"))
-//
-//    }
-//    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-//
-//    }
-//
+        nameLabel.text = profileData.FanDuelName
+        salaryLabel.text = "$\(salary ?? "0")"
+        experienceLabel.text = "\(profileData.Experience ?? 0)"
+        positionLabel.text = profileData.Position
+        weightLabel.text = "\(profileData.Weight)"
+        countryLabel.text = profileData.BirthCountry ?? ""
+        stateLabel.text = profileData.BirthState ?? ""
+        cityLabel.text = "\(profileData.BirthCity ?? ""),"
+        teamLabel.text = profileData.Team
+        heightLabel.text = "\(height)"
+        collegeLabel.text = "\(profileData.College)"
+        
+        
+//        let stateString = stateAbbreviations[stateData.state] ?? ""
+
+        guard let url = URL(string: profileData.PhotoUrl) else {return}
+        do {
+            let data = try Data(contentsOf: url)
+            self.profileImageView.image = UIImage(data: data)
+        } catch {
+            print("Error: error thrown to get image from url: \(url)")
+        }
+        
+
     }
+    
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+
+    }
+
 }

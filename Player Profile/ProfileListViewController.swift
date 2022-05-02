@@ -26,6 +26,15 @@ class ProfileListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUserInterface()
+        self.sortBasedOnSegmentPressed()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            let destination = segue.destination as! ProfileDetailViewController
+            let selectedIndexPath = tableView.indexPathForSelectedRow!
+            destination.profileData = profiles.profileArray[selectedIndexPath.row]
+        }
     }
     
     func configureSegmentedControl() {
@@ -37,7 +46,6 @@ class ProfileListViewController: UIViewController {
         profiles.getData {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.sortBasedOnSegmentPressed()
             }
         }
         eliminateNil()
@@ -84,11 +92,22 @@ extension ProfileListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profiles.profileArray.count
     }
+    func formatNumber() {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        var profileData: [ProfileInfo] = []
+        for i in 0...profiles.profileArray.count {
+            let salary = numberFormatter.string(from: NSNumber(value: profiles.profileArray[i].Salary ?? 0))
+            profileData.append(salary)
+        }
+        
+        }
+        
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "\(profiles.profileArray[indexPath.row].FanDuelName)"
-        cell.detailTextLabel?.text = "\(profiles.profileArray[indexPath.row].Team)"
+        cell.detailTextLabel?.text = "$\(profiles.profileArray[indexPath.row].Salary ?? 0)"
         return cell
     }
     
