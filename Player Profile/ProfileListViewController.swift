@@ -26,6 +26,7 @@ class ProfileListViewController: UIViewController {
         super.viewWillAppear(animated)
         updateUserInterface()
         sortBasedOnSegmentPressed()
+        configureSegmentedControl()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,7 +45,6 @@ class ProfileListViewController: UIViewController {
     func updateUserInterface() {
         profiles.getData {
             DispatchQueue.main.async {
-//                self.formatNumber()
                 self.tableView.reloadData()
             }
         }
@@ -66,15 +66,6 @@ class ProfileListViewController: UIViewController {
         sortBasedOnSegmentPressed()
     }
     
-    func formatNumber() {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        var salary = ""
-        for i in 0..<profiles.profileArray.count {
-            salary = numberFormatter.string(from: NSNumber(value: profiles.profileArray[i].Salary ?? 0))!
-            profiles.profileArray[i].Salary = Int(salary)
-        }
-    }
 }
 
 extension ProfileListViewController: UITableViewDelegate, UITableViewDataSource {
