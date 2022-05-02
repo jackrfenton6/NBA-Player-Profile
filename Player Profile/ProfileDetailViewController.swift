@@ -55,8 +55,16 @@ class ProfileDetailViewController: UIViewController {
 
     }
     
+    func leaveViewController() {
+        let isPresentingInAddModule = presentingViewController is UINavigationController
+        if isPresentingInAddModule {dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-
+        leaveViewController()
     }
 
 }

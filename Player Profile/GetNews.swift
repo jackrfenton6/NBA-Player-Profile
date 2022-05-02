@@ -1,16 +1,15 @@
 //
-//  Profile.swift
+//  GetNews.swift
 //  Player Profile
 //
-//  Created by Jack Fenton on 5/1/22.
+//  Created by Jack Fenton on 5/2/22.
 //
 
 import Foundation
 
-class Profiles {
-    
-    var profileArray: [ProfileInfo] = []
-    var url = "https://api.sportsdata.io/v3/nba/scores/json/Players?key=c084979e0acd447cb2ceb1f7fef4b9aa"
+class GetNews {
+    var newsArray: [News] = []
+    var url = "https://api.sportsdata.io/v3/nba/scores/json/News?key=c084979e0acd447cb2ceb1f7fef4b9aa"
     
     func getData(completed: @escaping () -> ()) {
         let urlString = url
@@ -30,8 +29,8 @@ class Profiles {
                 print("Error: \(error.localizedDescription)")
             }
             do {
-                self.profileArray = try JSONDecoder().decode([ProfileInfo].self, from: data!)
-                print(self.profileArray)
+                self.newsArray = try JSONDecoder().decode([News].self, from: data!)
+                print(self.newsArray)
             } catch {
                 print("JSON Error: \(error)")
             }
