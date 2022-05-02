@@ -26,7 +26,7 @@ class ProfileDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let heightFeet = Int(Float(profileData.Height/12).rounded())
+        let heightFeet = Int(Float((profileData.Height ?? 0)/12).rounded())
         let heightInches = Int(profileData.Height) - Int(heightFeet*12)
         let height = "\(heightFeet)'\(heightInches)"
         let numberFormatter = NumberFormatter()
@@ -63,7 +63,7 @@ class ProfileDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func backButtonPress(_ sender: Any) {
         leaveViewController()
     }
 

@@ -11,7 +11,8 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-  
+    @IBOutlet weak var sourceLabel: UILabel!
+    
     var newsData: News!
     
     override func viewDidLoad() {
