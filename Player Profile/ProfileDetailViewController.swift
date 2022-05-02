@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//import SDWebImage
 
 class ProfileDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
@@ -45,9 +44,6 @@ class ProfileDetailViewController: UIViewController {
         teamLabel.text = profileData.Team
         heightLabel.text = "\(height)"
         collegeLabel.text = "\(profileData.College)"
-        
-        
-//        let stateString = stateAbbreviations[stateData.state] ?? ""
 
         guard let url = URL(string: profileData.PhotoUrl) else {return}
         do {
@@ -56,7 +52,6 @@ class ProfileDetailViewController: UIViewController {
         } catch {
             print("Error: error thrown to get image from url: \(url)")
         }
-        
 
     }
     

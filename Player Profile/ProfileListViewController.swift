@@ -19,14 +19,13 @@ class ProfileListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         configureSegmentedControl()
-        eliminateNil()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUserInterface()
-        self.sortBasedOnSegmentPressed()
+        sortBasedOnSegmentPressed()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,28 +44,9 @@ class ProfileListViewController: UIViewController {
     func updateUserInterface() {
         profiles.getData {
             DispatchQueue.main.async {
+//                self.formatNumber()
                 self.tableView.reloadData()
             }
-        }
-        eliminateNil()
-    }
-    
-    func eliminateNil() {
-        var count = 0
-        for prof in profiles.profileArray {
-            if prof.BirthCity == nil {
-                profiles.profileArray[count].BirthCity = "N/A"
-            }
-            if prof.BirthState == nil {
-                profiles.profileArray[count].BirthState = "N/A"
-            }
-            if prof.BirthCountry == nil {
-                profiles.profileArray[count].BirthCountry = "N/A"
-            }
-            if prof.Salary == nil {
-                profiles.profileArray[count].Salary = 0
-            }
-            count += 1
         }
     }
     
@@ -85,29 +65,31 @@ class ProfileListViewController: UIViewController {
     @IBAction func sortSegmentPressed(_ sender: UISegmentedControl) {
         sortBasedOnSegmentPressed()
     }
+    
+    func formatNumber() {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        var salary = ""
+        for i in 0..<profiles.profileArray.count {
+            salary = numberFormatter.string(from: NSNumber(value: profiles.profileArray[i].Salary ?? 0))!
+            profiles.profileArray[i].Salary = Int(salary)
+        }
+    }
 }
-
 
 extension ProfileListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profiles.profileArray.count
     }
-    func formatNumber() {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        var profileData: [ProfileInfo] = []
-        for i in 0...profiles.profileArray.count {
-            let salary = numberFormatter.string(from: NSNumber(value: profiles.profileArray[i].Salary ?? 0))
-            profileData.append(salary)
-        }
-        
-        }
-        
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "\(profiles.profileArray[indexPath.row].FanDuelName)"
-        cell.detailTextLabel?.text = "$\(profiles.profileArray[indexPath.row].Salary ?? 0)"
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let salary = profiles.profileArray[indexPath.row].Salary ?? 0
+        let fixedSalary = numberFormatter.string(from: NSNumber(value: salary))
+        cell.detailTextLabel?.text = "Salary: $\(fixedSalary ?? "")"
         return cell
     }
     

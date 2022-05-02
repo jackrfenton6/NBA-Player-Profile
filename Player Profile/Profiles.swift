@@ -11,6 +11,7 @@ class Profiles {
     
     var profileArray: [ProfileInfo] = []
     var url = "https://api.sportsdata.io/v3/nba/scores/json/Players?key=c084979e0acd447cb2ceb1f7fef4b9aa"
+    var profileData: ProfileInfo!
     
     func getData(completed: @escaping () -> ()) {
         let urlString = url
