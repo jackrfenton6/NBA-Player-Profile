@@ -50,7 +50,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="BMu-Ok-aWd" kind="show" id="pTu-Da-lc7"/>
+                                            <segue destination="dYh-Ba-nkU" kind="show" identifier="ShowDetail" id="vS3-pQ-ur5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -129,7 +129,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="iXj-ex-n6H" kind="show" id="dHZ-OP-srO"/>
+                                            <segue destination="GH0-Bp-zGb" kind="show" identifier="NewsDetail" id="9P0-lr-YIZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -533,7 +533,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentLabel" destination="9Uz-MY-dNt" id="hNs-fX-yk1"/>
-                        <outlet property="dateLabel" destination="9Uz-MY-dNt" id="Fge-U3-pD2"/>
+                        <outlet property="dateLabel" destination="hO3-q7-WTb" id="Bse-tL-GQr"/>
                         <outlet property="sourceLabel" destination="SmB-FV-boo" id="thz-7G-rcD"/>
                         <outlet property="titleLabel" destination="3da-er-QWd" id="3LS-qG-mOA"/>
                     </connections>
@@ -581,6 +581,10 @@
             <point key="canvasLocation" x="1666.875" y="929.57746478873241"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9P0-lr-YIZ"/>
+        <segue reference="vS3-pQ-ur5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="nba-logo" width="492" height="485"/>
         <namedColor name="AccentColor">

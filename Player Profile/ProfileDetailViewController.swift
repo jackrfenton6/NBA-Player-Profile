@@ -25,11 +25,9 @@ class ProfileDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        guard let heightFeet = profileData.Height else {
-//            let heightFeet = 0
-//            return heightFeet
-//        }
-        let heightFeet = Int(Float(((profileData.Height) ?? 0)/12).rounded())
+            
+        var heightFeet = profileData.Height ?? 0
+        heightFeet = Int(Float(heightFeet/12).rounded())
         let heightInches = Int(profileData.Height ?? 0) - Int(heightFeet*12)
         let height = "\(heightFeet)'\(heightInches)"
         let numberFormatter = NumberFormatter()

@@ -20,10 +20,8 @@ class NewsViewController: UIViewController {
                 self.newsTableView.reloadData()
             }
         }
-        
         newsTableView.dataSource = self
         newsTableView.delegate = self
-
     }
     
     func leaveViewController() {
@@ -45,7 +43,6 @@ class NewsViewController: UIViewController {
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         leaveViewController()
     }
-    
 }
 
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -55,7 +52,7 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath)
-        cell.textLabel?.text = "\(news.newsArray[indexPath.row].Title)"
+        cell.textLabel?.text = "\(String(describing: news.newsArray[indexPath.row].Title))"
         return cell
     }
     

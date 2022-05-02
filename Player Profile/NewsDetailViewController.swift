@@ -12,7 +12,7 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
-    
+   
     var newsData: News!
     
     override func viewDidLoad() {
@@ -21,6 +21,7 @@ class NewsDetailViewController: UIViewController {
         titleLabel.text = newsData.Title
         dateLabel.text = newsData.TimeAgo
         contentLabel.text = newsData.Content
+        sourceLabel.text = newsData.OriginalSource
     }
     
     func leaveViewController() {
